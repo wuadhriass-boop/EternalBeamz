@@ -1,0 +1,73 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #0a0018, #1a002b, #0a0018);
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    overflow: hidden;
+  }
+  
+  /* Card container for multiple cards */
+  .card-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  /* Card styling */
+  .card {
+    background: linear-gradient(145deg, #3b0066, #1a002b);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    width: 260px;
+    box-shadow: 0 0 25px rgba(150, 0, 255, 0.8);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 40px rgba(200, 0, 255, 1);
+  }
+  
+  .card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #d9a6ff;
+  }
+  
+  .card p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #cfcfcf;
+  }
+  
+  /* Button */
+  .btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: #9d4edd;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(150, 0, 255, 0.7);
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  
+  .btn:hover {
+    background: #7b2cbf;
+    box-shadow: 0 0 25px rgba(200, 0, 255, 1);
+  }
+  
