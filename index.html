@@ -7,16 +7,16 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Stars Background -->
+  <!-- Stars Background Layers -->
   <div class="stars"></div>
   <div class="stars2"></div>
   <div class="stars3"></div>
 
   <!-- Music Control -->
   <div class="music-control">
-    <button id="music-btn">🔊 Play Music</button>
+    <button id="music-btn">🔇 Mute Music</button>
     <iframe id="yt-player" width="0" height="0"
-      src="https://www.youtube.com/embed/e9u0HmXLPmA?enablejsapi=1"
+      src="https://www.youtube.com/embed/e9u0HmXLPmA?enablejsapi=1&autoplay=1"
       frameborder="0" allow="autoplay">
     </iframe>
   </div>
@@ -29,7 +29,7 @@
     </a>
 
     <!-- Card 2 -->
-    <a href="https://app.beamers.si/u/EternaBeamz" class="card splunks">
+    <a href="https://app.beamers.si/u/EternaBeamz" class="card splunk">
       <h2>Splunks</h2>
     </a>
 
@@ -41,25 +41,31 @@
 
   <!-- Discord Button -->
   <div class="discord-btn">
-    <a href="https://discord.gg/Qk4UGnSg" target="_blank">Join Eternal Beamz</a>
+    <a href="https://discord.gg/YOURSERVER" target="_blank">Join Eternal Beamz</a>
   </div>
 
   <!-- Scripts -->
   <script>
     let player;
-    let playing = false;
+    let playing = true; // start as playing because of autoplay
 
     function onYouTubeIframeAPIReady() {
-      player = new YT.Player('yt-player');
+      player = new YT.Player('yt-player', {
+        events: {
+          'onReady': (event) => {
+            event.target.playVideo();
+          }
+        }
+      });
     }
 
     document.getElementById("music-btn").addEventListener("click", () => {
-      if (!playing) {
-        player.playVideo();
-        document.getElementById("music-btn").textContent = "🔇 Mute Music";
-      } else {
+      if (playing) {
         player.pauseVideo();
         document.getElementById("music-btn").textContent = "🔊 Play Music";
+      } else {
+        player.playVideo();
+        document.getElementById("music-btn").textContent = "🔇 Mute Music";
       }
       playing = !playing;
     });

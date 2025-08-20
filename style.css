@@ -1,33 +1,36 @@
-/* Background Stars */
+/* General Body with Animated Gradient */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(270deg, #000000, #111111, #1a1a1a, #0f0f0f);
+  background-size: 800% 800%;
+  animation: gradientAnimation 20s ease infinite;
+  font-family: 'Poppins', sans-serif;
   color: white;
-  background: black;
-  overflow-y: auto; /* allow scrolling on mobile */
-  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto; /* allow scrolling */
 }
 
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Stars Background (layered for depth) */
 .stars, .stars2, .stars3 {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  background-repeat: repeat;
-  z-index: -1;
-}
-
-.stars {
-  background: url("https://www.script-tutorials.com/demos/360/images/stars.png");
+  background: transparent url('https://www.script-tutorials.com/demos/360/images/stars.png') repeat top center;
+  z-index: 0;
 }
 .stars2 {
-  background: url("https://www.script-tutorials.com/demos/360/images/stars2.png");
-  animation: moveStars 200s linear infinite;
+  animation: moveStars 100s linear infinite;
 }
 .stars3 {
-  background: url("https://www.script-tutorials.com/demos/360/images/stars3.png");
-  animation: moveStars 300s linear infinite;
+  animation: moveStars 150s linear infinite;
 }
 
 @keyframes moveStars {
@@ -38,93 +41,90 @@ body {
 /* Music Control */
 .music-control {
   position: fixed;
-  top: 15px;
-  left: 15px;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
 }
-
-.music-control button {
-  padding: 8px 14px;
-  border: none;
-  border-radius: 6px;
+#music-btn {
   background: #222;
-  color: white;
+  border: 2px solid white;
+  padding: 10px 15px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 14px;
-  transition: background 0.3s;
+  color: white;
+  font-weight: bold;
 }
-.music-control button:hover {
-  background: #444;
+#music-btn:hover {
+  background: white;
+  color: black;
 }
 
 /* Card Container */
 .card-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 120px;
   gap: 30px;
-  padding-bottom: 120px; /* so last card isn't cut off */
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  z-index: 5;
+  position: relative;
+  padding: 100px 20px;
 }
 
+/* Card Base Style */
 .card {
-  width: 280px;
-  padding: 25px;
-  border-radius: 12px;
-  text-align: center;
   text-decoration: none;
   color: white;
-  font-size: 22px;
+  padding: 20px 50px;
+  font-size: 2rem;
+  border-radius: 20px;
   font-weight: bold;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease;
 }
 
-/* Individual Glows */
+/* Glowing Variants */
 .card.immortal {
-  background: #111;
-  box-shadow: 0 0 15px #000;
+  background: #000;
+  box-shadow: 0 0 20px #000, 0 0 40px #000;
 }
 .card.immortal:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px #000;
+  box-shadow: 0 0 30px #555, 0 0 60px #222;
 }
 
-.card.splunks {
-  background: #0a0a2a;
-  box-shadow: 0 0 15px #0011aa;
+.card.splunk {
+  background: #001133;
+  box-shadow: 0 0 20px #0044cc, 0 0 40px #001133;
 }
-.card.splunks:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px #0033ff;
+.card.splunk:hover {
+  box-shadow: 0 0 30px #0066ff, 0 0 60px #0044cc;
 }
 
 .card.injuries {
-  background: #220000;
-  box-shadow: 0 0 15px #aa0000;
+  background: #330000;
+  box-shadow: 0 0 20px #cc0000, 0 0 40px #660000;
 }
 .card.injuries:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px #ff0000;
+  box-shadow: 0 0 30px #ff0000, 0 0 60px #cc0000;
 }
 
 /* Discord Button */
 .discord-btn {
-  text-align: center;
-  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+  position: relative;
+  z-index: 5;
 }
-
 .discord-btn a {
-  display: inline-block;
-  padding: 10px 20px;
-  background: #5865f2;
+  background: #5865F2;
   color: white;
   text-decoration: none;
-  font-size: 14px;
-  border-radius: 6px;
-  box-shadow: 0 0 12px #5865f2;
-  transition: background 0.3s, transform 0.3s;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
 }
-
 .discord-btn a:hover {
   background: #4752c4;
-  transform: scale(1.05);
 }
