@@ -1,40 +1,33 @@
-/* Body & Background */
+/* Background Stars */
 body {
   margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: radial-gradient(circle at top, #0a001a, #000);
-  font-family: 'Orbitron', sans-serif;
-  overflow: hidden;
+  font-family: Arial, sans-serif;
   color: white;
+  background: black;
+  overflow-y: auto; /* allow scrolling on mobile */
+  height: 100vh;
 }
 
-/* Stars animation */
 .stars, .stars2, .stars3 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: transparent;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: repeat;
+  z-index: -1;
 }
 
 .stars {
-  background: url('https://www.transparenttextures.com/patterns/stardust.png');
+  background: url("https://www.script-tutorials.com/demos/360/images/stars.png");
+}
+.stars2 {
+  background: url("https://www.script-tutorials.com/demos/360/images/stars2.png");
   animation: moveStars 200s linear infinite;
 }
-
-.stars2 {
-  background: url('https://www.transparenttextures.com/patterns/tiny-cross.png');
-  animation: moveStars 300s linear infinite;
-}
-
 .stars3 {
-  background: url('https://www.transparenttextures.com/patterns/dark-matter.png');
-  animation: moveStars 400s linear infinite;
+  background: url("https://www.script-tutorials.com/demos/360/images/stars3.png");
+  animation: moveStars 300s linear infinite;
 }
 
 @keyframes moveStars {
@@ -42,60 +35,96 @@ body {
   to { background-position: -10000px 5000px; }
 }
 
-/* Card container */
-.card-container {
-  display: flex;
-  gap: 2rem;
-  z-index: 1;
-}
-
-/* Cards */
-.card {
-  background: rgba(40, 0, 60, 0.85);
-  border: 2px solid #9d4edd;
-  border-radius: 20px;
-  padding: 2rem 3rem;
-  text-decoration: none;
-  color: #fff;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0 25px rgba(157, 78, 221, 0.7);
-  animation: float 4s ease-in-out infinite;
-}
-
-.card:hover {
-  transform: translateY(-10px) scale(1.05);
-  box-shadow: 0 0 40px rgba(200, 0, 255, 1);
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
 /* Music Control */
 .music-control {
-  position: absolute;
+  position: fixed;
   top: 15px;
-  right: 20px;
-  z-index: 2;
+  left: 15px;
 }
 
-#music-btn {
-  background: #9d4edd;
+.music-control button {
+  padding: 8px 14px;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 12px;
-  color: #fff;
-  font-weight: bold;
+  border-radius: 6px;
+  background: #222;
+  color: white;
   cursor: pointer;
-  box-shadow: 0 0 15px rgba(150, 0, 255, 0.7);
-  transition: background 0.3s, box-shadow 0.3s;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+.music-control button:hover {
+  background: #444;
 }
 
-#music-btn:hover {
-  background: #7b2cbf;
-  box-shadow: 0 0 25px rgba(200, 0, 255, 1);
+/* Card Container */
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 120px;
+  gap: 30px;
+  padding-bottom: 120px; /* so last card isn't cut off */
+}
+
+.card {
+  width: 280px;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Individual Glows */
+.card.immortal {
+  background: #111;
+  box-shadow: 0 0 15px #000;
+}
+.card.immortal:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #000;
+}
+
+.card.splunks {
+  background: #0a0a2a;
+  box-shadow: 0 0 15px #0011aa;
+}
+.card.splunks:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #0033ff;
+}
+
+.card.injuries {
+  background: #220000;
+  box-shadow: 0 0 15px #aa0000;
+}
+.card.injuries:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #ff0000;
+}
+
+/* Discord Button */
+.discord-btn {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.discord-btn a {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #5865f2;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 6px;
+  box-shadow: 0 0 12px #5865f2;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.discord-btn a:hover {
+  background: #4752c4;
+  transform: scale(1.05);
 }
